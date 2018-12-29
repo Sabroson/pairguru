@@ -12,4 +12,6 @@
 class Comment < ApplicationRecord
   belongs_to :movie
   belongs_to :user
+
+  validates_with CommentsValidator
 end

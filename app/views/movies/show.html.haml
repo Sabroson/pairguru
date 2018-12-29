@@ -3,3 +3,15 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+%ul
+  - @comments.each do |comment|
+    %li
+      = comment.content
+      - if user_signed_in? && (current_user == comment.user)
+        = link_to "delete", movie_comment_path(@movie, comment), method: :delete
+- if user_signed_in?
+  = form_with(model: [ @movie, @comment ]) do |f|
+    .form-group
+    = f.text_field :content, autofocus: true, class: 'form-control'
+    .actions.pull-right
+    = f.submit "Submit Comment", class: 'btn btn-primary'
