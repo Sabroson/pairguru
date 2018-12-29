@@ -1,0 +1,4 @@
+%p
+  = comment.content
+  - if policy(comment).destroy?
+    = link_to "delete", movie_comment_path(@movie, comment), method: :delete

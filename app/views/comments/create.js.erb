@@ -1,0 +1,22 @@
+function refreshForm(formHTML) {
+  const newReviewForm = document.getElementById('new_comment');
+  newReviewForm.innerHTML = formHTML;
+}
+
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments');
+  comments.insertAdjacentHTML('beforeend', commentHTML);
+}
+
+function displayError(errorHTML) {
+  const formErrors = document.getElementById('form_errors');
+  formErrors.innerHTML = errorHTML;
+}
+
+<% if @comment.errors.any? %>
+  displayError('<%= j render "comments/form_errors", comment: @comment %>')
+  refreshForm('<%= j render "comments/form", movie: @movie, comment: @comment %>');
+<% else %>
+  addComment('<%= j render "comments/show", comment: @comment %>');
+  refreshForm('<%= j render "comments/form", movie: @movie, comment: Comment.new %>');
+<% end %>

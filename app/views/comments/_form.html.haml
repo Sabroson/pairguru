@@ -1,0 +1,5 @@
+= form_for([ movie, comment ], id: "new_comment", remote: true) do |f|
+  .form-group
+  = f.text_field :content, autofocus: true, class: 'form-control', placeholder: "Your comment..."
+  .actions.pull-right
+  = f.submit "Submit Comment", class: 'btn btn-primary'

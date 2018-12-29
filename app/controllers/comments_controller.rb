@@ -1,14 +1,25 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    @comment.movie = Movie.find(params[:movie_id])
+    @movie = Movie.find(params[:movie_id])
+    @comment.movie = @movie
     @comment.user = current_user
-    @comment.save
-    redirect_to movie_path(@comment.movie)
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to movie_path(@movie) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render "movies/show" }
+        format.js
+      end
+    end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    authorize @comment
     @comment.destroy
     movie = Movie.find(params[:movie_id])
     redirect_to movie_path(movie)

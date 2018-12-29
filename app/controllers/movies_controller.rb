@@ -7,7 +7,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @comments = @movie.comments.all
     @comment = Comment.new
   end
 
