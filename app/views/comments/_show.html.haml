@@ -1,0 +1,6 @@
+.panel.panel-default
+  .panel-heading= comment.user.email
+  .panel-body= comment.content
+  - if policy(comment).destroy?
+    %ul.list-group
+      %li.list-group-item= link_to "Delete Comment", movie_comment_path(@movie, comment), method: :delete
