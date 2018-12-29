@@ -1,0 +1,6 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1.text-center Top Commenters - Last 7 days
+    %ul
+      - @top_commenters.each do |commenter|
+        %li= "#{commenter[0]} - #{commenter[1]}"
