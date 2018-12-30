@@ -1,6 +1,6 @@
-.panel.panel-default
+.panel.panel-default{:data => {:comment => comment.id}}
   .panel-heading= comment.user.name
   .panel-body= comment.content
   - if policy(comment).destroy?
     %ul.list-group
-      %li.list-group-item= link_to "Delete Comment", movie_comment_path(@movie, comment), method: :delete
+      %li.list-group-item= link_to "Delete Comment", movie_comment_path(@movie, comment), method: :delete, remote: true

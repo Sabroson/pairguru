@@ -20,9 +20,19 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     authorize @comment
-    @comment.destroy
-    movie = Movie.find(params[:movie_id])
-    redirect_to movie_path(movie)
+    if @comment.destroy
+      respond_to do |format|
+        format.html do
+          redirect_to movie_path(@comment.movie)
+        end
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: movie_path(@comment.movie), alert: "The comment couldn't be deleted.")}
+        format.js
+      end
+    end
   end
 
   def top_commenters
