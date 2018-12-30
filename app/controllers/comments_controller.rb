@@ -25,6 +25,10 @@ class CommentsController < ApplicationController
     redirect_to movie_path(movie)
   end
 
+  def top_commenters
+    @top_commenters = Comment.joins(:user).where("comments.created_at >= ?", 7.days.ago).group(:user).order("count_users_id desc").count("users.id").first(10)
+  end
+
   private
 
   def comment_params

@@ -1,5 +1,5 @@
 .panel.panel-default
-  .panel-heading= comment.user.email
+  .panel-heading= comment.user.name
   .panel-body= comment.content
   - if policy(comment).destroy?
     %ul.list-group

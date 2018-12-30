@@ -1,0 +1,16 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1.text-center Top Commenters
+    %h3.text-center (Last 7 days)
+    %table.table.table-striped.text-center
+      %thead
+        %tr
+          %th.text-center Ranking
+          %th.text-center User
+          %th.text-center Number of comments
+      %tbody
+        - @top_commenters.each_with_index do |commenter, i|
+          %tr
+            %td= i + 1
+            %td= commenter[0].name # comenter[0] is user object
+            %td= commenter[1] # number of comments count
