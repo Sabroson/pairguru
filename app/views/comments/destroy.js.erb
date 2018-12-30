@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  displayFlash('<%= j render "layouts/messages", flash: {error: "Did not delete comment"} %>');
+<% else %>
+  removeComment(<%= @comment.id %>);
+  hideError();
+  hideFlash();
+<% end %>

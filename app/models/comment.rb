@@ -14,4 +14,5 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   validates_with CommentsValidator
+  validates :content, presence: true
 end
