@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def top_commenters
-    @top_commenters = Comment.joins(:user).where("comments.created_at >= #{Time.zone.today - 7}").group("users.email").order("count_users_email desc").count("users.email").first(10)
+    @top_commenters = Comment.joins(:user).where("comments.created_at >= ?", 7.days.ago).group(:user).order("count_users_id desc").count("users.id").first(10)
   end
 
   private
