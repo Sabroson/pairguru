@@ -168,6 +168,8 @@ GEM
     public_suffix (3.0.2)
     pundit (2.0.0)
       activesupport (>= 3.0.0)
+    pundit-matchers (1.6.0)
+      rspec-rails (>= 3.0.0)
     rack (2.0.4)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -309,6 +311,7 @@ DEPENDENCIES
   listen
   pry-rails
   pundit
+  pundit-matchers
   rails (= 5.2)
   rails-erd
   rspec-rails
