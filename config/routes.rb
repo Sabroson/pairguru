@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get "top-comenters", to: "comments#top_commenters", as: "top_commenters"
+  get "top-commenters", to: "comments#top_commenters", as: "top_commenters"
 end
