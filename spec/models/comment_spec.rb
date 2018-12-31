@@ -18,7 +18,7 @@ RSpec.describe Comment, type: :model do
   it "is not valid if it is the second comment for the same movie by the same user" do
     user = create(:user)
     movie = create(:movie)
-    comment = create(:comment, user: user, movie: movie)
+    create(:comment, user: user, movie: movie)
     second_comment = build(:comment, user: user, movie: movie)
     expect(second_comment).to_not be_valid
   end
